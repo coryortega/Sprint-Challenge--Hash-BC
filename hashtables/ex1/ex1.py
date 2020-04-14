@@ -12,7 +12,22 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
+    #implement a function `get_indices_of_item_weights` 
+    # that finds two items whose sum of weights equals the weight limit `limit`. 
+    for i in range(length):
+        hash_table_insert(ht, weights[i], i)
+    # Your function will return an instance of an `Answer` tuple that has the following form:
 
+    # (zero, one)
+    
+    for i in range(length):
+        next = hash_table_retrieve(ht, (limit - weights[i]))
+        if next:
+            if next >= 1:
+                return [next, i]
+            else:
+                return [i, next]
+        
     return None
 
 
